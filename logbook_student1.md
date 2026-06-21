@@ -177,3 +177,10 @@
   * Deployed frontend code to Vercel via GitHub connection and checked live URL loading behaviors.
 * **Key Decisions**:
   * Chose to maintain `http://localhost:5000` as local fallback in env variables to preserve local offline execution.
+
+### Day 23: 26 June 2026
+* **Tasks Undertaken**:
+  * Tested every feature on the deployed Vercel URL under simulated mobile, tablet, and desktop viewports, correcting minor alignment offsets.
+  * Authored **Chapter 1 (Introduction)** and **Chapter 4 (UI Design)** of the final project report.
+* **Key Decisions**:
+  * Outlined wireframe references and glassmorphic styling choices directly in Chapter 4 to satisfy documentation guidelines.
