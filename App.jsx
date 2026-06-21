@@ -5,6 +5,8 @@ import DetailAndHistoryView from './Detail&HistoryView';
 import ReportsAndAnalyticsDashboard from './Reports&AnalyticsDashboard';
 import SportsEventSponsorshipAndKitDonationDetailPage from './SportsEventSponsorship&KitDonationDetailPage';
 
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+
 export default function App() {
   const [currentView, setCurrentView] = useState('dashboard'); // 'dashboard' or 'entry-form'
   const [editingId, setEditingId] = useState(null);
@@ -23,7 +25,7 @@ export default function App() {
 
   const fetchGlobalStats = async () => {
     try {
-      const response = await fetch('http://localhost:5000/api/dashboard/summary');
+      const response = await fetch(`${API_URL}/api/dashboard/summary`);
       const data = await response.json();
       if (data.success) {
         setGlobalStats(data.summary);

@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+
 export default function ReportsAndAnalyticsDashboard() {
   const [startDate, setStartDate] = useState('');
   const [endDate, setEndDate] = useState('');
@@ -13,7 +15,7 @@ export default function ReportsAndAnalyticsDashboard() {
   const fetchSummary = async () => {
     setLoading(true);
     try {
-      const url = `http://localhost:5000/api/reports/summary?startDate=${startDate}&endDate=${endDate}`;
+      const url = `${API_URL}/api/reports/summary?startDate=${startDate}&endDate=${endDate}`;
       const response = await fetch(url);
       const data = await response.json();
       if (data.success) {
@@ -27,7 +29,7 @@ export default function ReportsAndAnalyticsDashboard() {
   };
 
   const handleExportCSV = () => {
-    window.open('http://localhost:5000/api/sports_event_sponsorship_kit_donati/export', '_blank');
+    window.open(`${API_URL}/api/sports_event_sponsorship_kit_donati/export`, '_blank');
   };
 
   // Helper for Category spend bar chart height scaling

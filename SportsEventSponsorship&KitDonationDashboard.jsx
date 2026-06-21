@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+
 export default function SportsEventSponsorshipAndKitDonationDashboard({ onViewDetails, onEditRecord }) {
   const [records, setRecords] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -20,7 +22,7 @@ export default function SportsEventSponsorshipAndKitDonationDashboard({ onViewDe
   const fetchRecords = async () => {
     setLoading(true);
     try {
-      const url = `http://localhost:5000/api/sports_event_sponsorship_kit_donati?page=${currentPage}&limit=20&status=${statusFilter}&search=${searchTerm}`;
+      const url = `${API_URL}/api/sports_event_sponsorship_kit_donati?page=${currentPage}&limit=20&status=${statusFilter}&search=${searchTerm}`;
       const response = await fetch(url);
       const resData = await response.json();
 
@@ -49,7 +51,7 @@ export default function SportsEventSponsorshipAndKitDonationDashboard({ onViewDe
     if (!confirmed) return;
 
     try {
-      const response = await fetch(`http://localhost:5000/api/sports_event_sponsorship_kit_donati/${id}/status`, {
+      const response = await fetch(`${API_URL}/api/sports_event_sponsorship_kit_donati/${id}/status`, {
         method: 'PATCH',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ status: newStatus })

@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+
 export default function SportsEventSponsorshipAndKitDonationEntryForm({ sponsorshipId, onSave, onCancel }) {
   const [eventName, setEventName] = useState('');
   const [startDate, setStartDate] = useState('');
@@ -32,7 +34,7 @@ export default function SportsEventSponsorshipAndKitDonationEntryForm({ sponsors
 
   const fetchExistingRecord = async () => {
     try {
-      const response = await fetch(`http://localhost:5000/api/sports_event_sponsorship_kit_donati/${sponsorshipId}`);
+      const response = await fetch(`${API_URL}/api/sports_event_sponsorship_kit_donati/${sponsorshipId}`);
       const resData = await response.json();
       if (resData.success) {
         const data = resData.data;
@@ -117,8 +119,8 @@ export default function SportsEventSponsorshipAndKitDonationEntryForm({ sponsors
     setSubmitting(true);
     try {
       const url = isEditMode 
-        ? `http://localhost:5000/api/sports_event_sponsorship_kit_donati/${sponsorshipId}`
-        : 'http://localhost:5000/api/sports_event_sponsorship_kit_donati';
+        ? `${API_URL}/api/sports_event_sponsorship_kit_donati/${sponsorshipId}`
+        : `${API_URL}/api/sports_event_sponsorship_kit_donati`;
 
       const method = isEditMode ? 'PUT' : 'POST';
 

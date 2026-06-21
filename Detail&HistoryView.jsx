@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+
 export default function DetailAndHistoryView({ sponsorshipId, onClose }) {
   const [analysis, setAnalysis] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -14,7 +16,7 @@ export default function DetailAndHistoryView({ sponsorshipId, onClose }) {
   const fetchAnalysis = async () => {
     setLoading(true);
     try {
-      const response = await fetch(`http://localhost:5000/api/sports_event_sponsorship_kit_donati/${sponsorshipId}/engine_analysis`);
+      const response = await fetch(`${API_URL}/api/sports_event_sponsorship_kit_donati/${sponsorshipId}/engine_analysis`);
       const data = await response.json();
       if (data.success) {
         setAnalysis(data.analysis);

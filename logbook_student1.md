@@ -169,3 +169,11 @@
   * Fixed responsive mobile and tablet issues at 375px and 768px viewports.
 * **Key Decisions**:
   * Enforced global font inheritance of the 'Inter' family on all elements including inputs/buttons in stylesheet rather than inline blocks to keep files lean.
+
+### Day 22: 25 June 2026
+* **Tasks Undertaken**:
+  * Configured client application pages to pull the base API target URL dynamically via environment variables (`import.meta.env.VITE_API_URL`).
+  * Run and audited production builds (`npm run build`) ensuring 100% compliance and zero compilation alerts.
+  * Deployed frontend code to Vercel via GitHub connection and checked live URL loading behaviors.
+* **Key Decisions**:
+  * Chose to maintain `http://localhost:5000` as local fallback in env variables to preserve local offline execution.

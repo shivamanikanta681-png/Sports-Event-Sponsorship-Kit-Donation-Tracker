@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+
 export default function SportsEventSponsorshipAndKitDonationDetailPage({ sponsorshipId, onBack }) {
   const [detailData, setDetailData] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -13,7 +15,7 @@ export default function SportsEventSponsorshipAndKitDonationDetailPage({ sponsor
   const fetchDetails = async () => {
     setLoading(true);
     try {
-      const response = await fetch(`http://localhost:5000/api/sports_event_sponsorship_kit_donati/${sponsorshipId}/detail`);
+      const response = await fetch(`${API_URL}/api/sports_event_sponsorship_kit_donati/${sponsorshipId}/detail`);
       const resData = await response.json();
       if (resData.success) {
         setDetailData(resData.data);
