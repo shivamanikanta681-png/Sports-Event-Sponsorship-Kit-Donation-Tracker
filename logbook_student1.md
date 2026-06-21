@@ -124,3 +124,11 @@
   * Tested the full CRUD update flow locally in browser.
 * **Key Decisions**:
   * Added safety browser pop-up checks (`window.confirm`) on critical status transitions to avoid accidental clicks.
+
+### Day 17: 19 June 2026
+* **Tasks Undertaken**:
+  * Participated in the Review 2 presentation day, demonstrating the live frontend tracking system to primary evaluator **Pamba Vamshi Krishna Sir**.
+  * Walked through form submissions showing real data and the dashboard displaying populated logs.
+  * Documented feedback regarding ROI score indicator tooltips.
+* **Key Decisions**:
+  * Decided to introduce info tooltips on the next iteration to explain the weighted calculation parameters of the ROI score.
