@@ -142,3 +142,12 @@
   * Maintained CSS style definitions in [style.css](file:///C:/Users/Shiva/.gemini/antigravity/scratch/oxygen-sports-tracker/frontend/style.css).
 * **Key Decisions**:
   * Selected SVG graphic models over external canvas frameworks to avoid heavy libraries and guarantee cross-device styling stability.
+
+### Day 19: 22 June 2026
+* **Tasks Undertaken**:
+  * Programmed the top header breadcrumb navigation bar in [App.jsx](file:///C:/Users/Shiva/.gemini/antigravity/scratch/oxygen-sports-tracker/frontend/App.jsx).
+  * Designed and coded the **Home Dashboard Summary metrics widget** fetching live overall spends, active counts, and critical flags.
+  * Linked dynamic updates between component switches to automatically trigger metrics updates.
+  * Executed comprehensive layout navigation tests in browser.
+* **Key Decisions**:
+  * Rendered the home summary card at the root level of `App.jsx` so that the metrics display remains accessible during both Dashboard list views and Reports view.

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import SportsEventSponsorshipAndKitDonationDashboard from './SportsEventSponsorship&KitDonationDashboard';
 import SportsEventSponsorshipAndKitDonationEntryForm from './SportsEventSponsorship&KitDonationEntryForm';
 import DetailAndHistoryView from './Detail&HistoryView';
@@ -8,6 +8,29 @@ export default function App() {
   const [currentView, setCurrentView] = useState('dashboard'); // 'dashboard' or 'entry-form'
   const [editingId, setEditingId] = useState(null);
   const [inspectingId, setInspectingId] = useState(null);
+  const [globalStats, setGlobalStats] = useState({
+    totalSpend: 0,
+    activeCount: 0,
+    completedCount: 0,
+    warningAlertsCount: 0,
+    totalRecords: 0
+  });
+
+  useEffect(() => {
+    fetchGlobalStats();
+  }, [currentView, inspectingId]);
+
+  const fetchGlobalStats = async () => {
+    try {
+      const response = await fetch('http://localhost:5000/api/dashboard/summary');
+      const data = await response.json();
+      if (data.success) {
+        setGlobalStats(data.summary);
+      }
+    } catch (error) {
+      console.error("Error fetching global stats:", error);
+    }
+  };
 
   const handleCreateNew = () => {
     setEditingId(null);
@@ -107,6 +130,70 @@ export default function App() {
           </button>
         </nav>
       </header>
+
+      {/* Breadcrumb Navigation */}
+      <div className="breadcrumb-bar" style={{ maxWidth: '1150px', margin: '15px auto 0 auto', padding: '0 30px', fontSize: '0.85rem', color: '#64748b' }}>
+        <span style={{ cursor: 'pointer', color: '#3b82f6' }} onClick={() => setCurrentView('dashboard')}>Oxygen Sports</span>
+        <span style={{ margin: '0 8px' }}>/</span>
+        <span style={{ color: '#94a3b8', textTransform: 'capitalize' }}>
+          {currentView === 'entry-form' ? (editingId ? 'Edit Entry' : 'New Entry') : currentView}
+        </span>
+      </div>
+
+      {/* Home Summary Alerts Widget */}
+      <div className="dashboard-summary-widget" style={{
+        maxWidth: '1090px',
+        margin: '15px auto 5px auto',
+        padding: '15px 20px',
+        background: 'rgba(255, 107, 0, 0.05)',
+        border: '1px solid rgba(255, 107, 0, 0.15)',
+        borderRadius: '12px',
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        flexWrap: 'wrap',
+        gap: '15px'
+      }}>
+        <div style={{ display: 'flex', gap: '30px', alignItems: 'center' }}>
+          <div>
+            <span style={{ fontSize: '0.75rem', color: '#94a3b8', textTransform: 'uppercase', fontWeight: 600 }}>Total Distributed Spend</span>
+            <div style={{ fontSize: '1.25rem', fontWeight: 800, color: '#ff8c00', marginTop: '3px' }}>
+              ₹{globalStats.totalSpend.toLocaleString()}
+            </div>
+          </div>
+          <div style={{ width: '1px', height: '30px', backgroundColor: 'rgba(255,255,255,0.1)' }}></div>
+          <div>
+            <span style={{ fontSize: '0.75rem', color: '#94a3b8', textTransform: 'uppercase', fontWeight: 600 }}>Active Projects</span>
+            <div style={{ fontSize: '1.25rem', fontWeight: 800, color: '#f8fafc', marginTop: '3px' }}>
+              {globalStats.activeCount}
+            </div>
+          </div>
+          <div style={{ width: '1px', height: '30px', backgroundColor: 'rgba(255,255,255,0.1)' }}></div>
+          <div>
+            <span style={{ fontSize: '0.75rem', color: '#94a3b8', textTransform: 'uppercase', fontWeight: 600 }}>Completed Campaigns</span>
+            <div style={{ fontSize: '1.25rem', fontWeight: 800, color: '#22c55e', marginTop: '3px' }}>
+              {globalStats.completedCount}
+            </div>
+          </div>
+        </div>
+        
+        {globalStats.warningAlertsCount > 0 && (
+          <div style={{
+            backgroundColor: 'rgba(239, 68, 68, 0.15)',
+            border: '1px solid #ef4444',
+            padding: '8px 16px',
+            borderRadius: '8px',
+            color: '#fca5a5',
+            fontSize: '0.85rem',
+            fontWeight: 700,
+            display: 'flex',
+            alignItems: 'center',
+            gap: '8px'
+          }}>
+            ⚠️ {globalStats.warningAlertsCount} Critical Flags Active (Low ROI / Overbudget)
+          </div>
+        )}
+      </div>
 
       {/* Main Content Area */}
       <main style={{ marginTop: '20px' }}>
