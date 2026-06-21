@@ -132,3 +132,13 @@
   * Documented feedback regarding ROI score indicator tooltips.
 * **Key Decisions**:
   * Decided to introduce info tooltips on the next iteration to explain the weighted calculation parameters of the ROI score.
+
+### Day 18: 20 June 2026
+* **Tasks Undertaken**:
+  * Built the **Reports and Analytics Dashboard** screen: [Reports&AnalyticsDashboard.jsx](file:///C:/Users/Shiva/.gemini/antigravity/scratch/oxygen-sports-tracker/frontend/Reports&AnalyticsDashboard.jsx).
+  * Designed custom SVG visual rendering graphs: a Bar Chart for category budget spreads and a 30-day line chart tracking daily expenditures.
+  * Configured date-range inputs (From Date, To Date) and hooked CSV export downloads.
+  * Implemented ROI index tooltip info icon on [Detail&HistoryView.jsx](file:///C:/Users/Shiva/.gemini/antigravity/scratch/oxygen-sports-tracker/frontend/Detail&HistoryView.jsx).
+  * Maintained CSS style definitions in [style.css](file:///C:/Users/Shiva/.gemini/antigravity/scratch/oxygen-sports-tracker/frontend/style.css).
+* **Key Decisions**:
+  * Selected SVG graphic models over external canvas frameworks to avoid heavy libraries and guarantee cross-device styling stability.

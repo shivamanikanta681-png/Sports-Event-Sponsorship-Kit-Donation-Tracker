@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import SportsEventSponsorshipAndKitDonationDashboard from './SportsEventSponsorship&KitDonationDashboard';
 import SportsEventSponsorshipAndKitDonationEntryForm from './SportsEventSponsorship&KitDonationEntryForm';
 import DetailAndHistoryView from './Detail&HistoryView';
+import ReportsAndAnalyticsDashboard from './Reports&AnalyticsDashboard';
 
 export default function App() {
   const [currentView, setCurrentView] = useState('dashboard'); // 'dashboard' or 'entry-form'
@@ -75,6 +76,21 @@ export default function App() {
             Dashboard
           </button>
           <button
+            onClick={() => setCurrentView('reports')}
+            style={{
+              backgroundColor: currentView === 'reports' ? '#ff6b00' : 'rgba(255, 255, 255, 0.05)',
+              color: '#fff',
+              border: 'none',
+              padding: '8px 20px',
+              borderRadius: '6px',
+              fontWeight: 700,
+              cursor: 'pointer',
+              transition: 'background-color 0.2s'
+            }}
+          >
+            Reports & Analytics
+          </button>
+          <button
             onClick={handleCreateNew}
             style={{
               backgroundColor: currentView === 'entry-form' && !editingId ? '#ff6b00' : 'rgba(255, 255, 255, 0.05)',
@@ -99,6 +115,8 @@ export default function App() {
             onViewDetails={handleInspectRecord}
             onEditRecord={handleEditRecord}
           />
+        ) : currentView === 'reports' ? (
+          <ReportsAndAnalyticsDashboard />
         ) : (
           <SportsEventSponsorshipAndKitDonationEntryForm 
             sponsorshipId={editingId}

@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 export default function DetailAndHistoryView({ sponsorshipId, onClose }) {
   const [analysis, setAnalysis] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [showTooltip, setShowTooltip] = useState(false);
 
   useEffect(() => {
     if (sponsorshipId) {
@@ -65,7 +66,24 @@ export default function DetailAndHistoryView({ sponsorshipId, onClose }) {
             {/* Visual KPI: ROI Score Meter & Trend Indicators */}
             <div className="drawer-kpi-card">
               <div className="roi-meter-box">
-                <span className="roi-meter-label">Sponsorship ROI Index</span>
+                <span className="roi-meter-label">
+                  Sponsorship ROI Index
+                  <span 
+                    className="tooltip-info-icon"
+                    onMouseEnter={() => setShowTooltip(true)}
+                    onMouseLeave={() => setShowTooltip(false)}
+                    onClick={() => setShowTooltip(!showTooltip)}
+                  >
+                    i
+                    {showTooltip && (
+                      <span className="tooltip-info-box">
+                        <strong>Weighted ROI Score Calculation:</strong><br />
+                        • 60% Brand Exposure (Banner, Logo, Speech, Media)<br />
+                        • 40% Savings Score (Budget Limit vs Total Kit Cost)
+                      </span>
+                    )}
+                  </span>
+                </span>
                 <span className="roi-meter-value">{analysis.roi_score_index} / 100</span>
                 <div className="progress-bar-bg">
                   <div className="progress-bar-fill" style={{ width: `${analysis.roi_score_index}%` }}></div>
