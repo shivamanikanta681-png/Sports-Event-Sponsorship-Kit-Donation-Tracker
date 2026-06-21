@@ -4,6 +4,7 @@ import SportsEventSponsorshipAndKitDonationEntryForm from './SportsEventSponsors
 import DetailAndHistoryView from './Detail&HistoryView';
 import ReportsAndAnalyticsDashboard from './Reports&AnalyticsDashboard';
 import SportsEventSponsorshipAndKitDonationDetailPage from './SportsEventSponsorship&KitDonationDetailPage';
+import ProjectTeam from './ProjectTeam';
 
 const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
 
@@ -118,6 +119,21 @@ export default function App() {
             Reports & Analytics
           </button>
           <button
+            onClick={() => setCurrentView('team')}
+            style={{
+              backgroundColor: currentView === 'team' ? '#ff6b00' : 'rgba(255, 255, 255, 0.05)',
+              color: '#fff',
+              border: 'none',
+              padding: '8px 20px',
+              borderRadius: '6px',
+              fontWeight: 700,
+              cursor: 'pointer',
+              transition: 'background-color 0.2s'
+            }}
+          >
+            Project Team
+          </button>
+          <button
             onClick={handleCreateNew}
             style={{
               backgroundColor: currentView === 'entry-form' && !editingId ? '#ff6b00' : 'rgba(255, 255, 255, 0.05)',
@@ -213,6 +229,8 @@ export default function App() {
             sponsorshipId={inspectingId}
             onBack={() => { setCurrentView('dashboard'); setInspectingId(null); }}
           />
+        ) : currentView === 'team' ? (
+          <ProjectTeam />
         ) : (
           <SportsEventSponsorshipAndKitDonationEntryForm 
             sponsorshipId={editingId}
