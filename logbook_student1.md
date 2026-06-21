@@ -197,5 +197,12 @@
 * **Tasks Undertaken**:
   * Presented the final Review 3 live demo to evaluators showing form validations, dynamic chart statistics, details logs, and mobile stack layouts.
   * Answered evaluator UX questions on badge colors and navigation bars.
-* **Key Decisions**:
   * Submitted all frontend-related package parameters and finalized logs on the main Git remotes.
+
+### Day 26: 30 June 2026
+* **Tasks Undertaken**:
+  * Compiled final frontend reflections listing my developed UI/UX skills.
+  * Officially submitted the final logbook to the instructor and closed the internship.
+* **Key Decisions**:
+  * Concluded the internship with reflections and final git pushes.
+
