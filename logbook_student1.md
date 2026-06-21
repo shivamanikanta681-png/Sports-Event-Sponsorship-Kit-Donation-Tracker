@@ -151,3 +151,12 @@
   * Executed comprehensive layout navigation tests in browser.
 * **Key Decisions**:
   * Rendered the home summary card at the root level of `App.jsx` so that the metrics display remains accessible during both Dashboard list views and Reports view.
+
+### Day 20: 23 June 2026
+* **Tasks Undertaken**:
+  * Created the full-screen details view component [SportsEventSponsorship&KitDonationDetailPage.jsx](file:///C:/Users/Shiva/.gemini/antigravity/scratch/oxygen-sports-tracker/frontend/SportsEventSponsorship&KitDonationDetailPage.jsx) displaying itemized tables, branding outputs, and joined audit trails.
+  * Added print action trigger firing browser-native PDF export overrides.
+  * Link detailed page state in [App.jsx](file:///C:/Users/Shiva/.gemini/antigravity/scratch/oxygen-sports-tracker/frontend/App.jsx) replacing drawer modals.
+  * Added CSS declarations in [style.css](file:///C:/Users/Shiva/.gemini/antigravity/scratch/oxygen-sports-tracker/frontend/style.css).
+* **Key Decisions**:
+  * Built custom print media css rule blocks (`@media print`) to hide navigation layouts, headers, and buttons, ensuring printed invoice details remain clean.

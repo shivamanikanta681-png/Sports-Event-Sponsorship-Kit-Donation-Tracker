@@ -3,6 +3,7 @@ import SportsEventSponsorshipAndKitDonationDashboard from './SportsEventSponsors
 import SportsEventSponsorshipAndKitDonationEntryForm from './SportsEventSponsorship&KitDonationEntryForm';
 import DetailAndHistoryView from './Detail&HistoryView';
 import ReportsAndAnalyticsDashboard from './Reports&AnalyticsDashboard';
+import SportsEventSponsorshipAndKitDonationDetailPage from './SportsEventSponsorship&KitDonationDetailPage';
 
 export default function App() {
   const [currentView, setCurrentView] = useState('dashboard'); // 'dashboard' or 'entry-form'
@@ -44,6 +45,7 @@ export default function App() {
 
   const handleInspectRecord = (id) => {
     setInspectingId(id);
+    setCurrentView('detail');
   };
 
   const handleFormSave = () => {
@@ -204,6 +206,11 @@ export default function App() {
           />
         ) : currentView === 'reports' ? (
           <ReportsAndAnalyticsDashboard />
+        ) : currentView === 'detail' ? (
+          <SportsEventSponsorshipAndKitDonationDetailPage 
+            sponsorshipId={inspectingId}
+            onBack={() => { setCurrentView('dashboard'); setInspectingId(null); }}
+          />
         ) : (
           <SportsEventSponsorshipAndKitDonationEntryForm 
             sponsorshipId={editingId}
@@ -212,14 +219,6 @@ export default function App() {
           />
         )}
       </main>
-
-      {/* Inspection Drawer Overlay */}
-      {inspectingId && (
-        <DetailAndHistoryView 
-          sponsorshipId={inspectingId}
-          onClose={() => setInspectingId(null)}
-        />
-      )}
     </div>
   );
 }

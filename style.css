@@ -658,3 +658,103 @@ body {
   pointer-events: none;
   text-align: left;
 }
+
+/* Detail Page Styles */
+.detail-page-container {
+  padding: 30px;
+  background-color: #0f172a;
+  color: #f8fafc;
+  border-radius: 16px;
+  max-width: 950px;
+  margin: 20px auto;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  border: 1px solid rgba(255, 107, 0, 0.15);
+}
+
+.detail-actions-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.detail-header-card {
+  padding: 24px;
+  background-color: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  margin-bottom: 20px;
+}
+
+.detail-event-title {
+  margin: 0 0 15px 0;
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: #ff8c00;
+}
+
+.detail-meta-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 15px;
+  font-size: 0.9rem;
+  color: #cbd5e1;
+}
+
+.detail-section-card {
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.01);
+  border: 1px solid rgba(255, 255, 255, 0.03);
+  border-radius: 12px;
+}
+
+/* Printing CSS Stylesheet Override */
+@media print {
+  body {
+    background-color: #ffffff !important;
+    color: #000000 !important;
+    font-family: Arial, sans-serif !important;
+  }
+  
+  .no-print, header, .breadcrumb-bar, .dashboard-summary-widget, .detail-actions-row {
+    display: none !important;
+  }
+  
+  .detail-page-container {
+    border: none !important;
+    box-shadow: none !important;
+    background-color: transparent !important;
+    color: #000000 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    max-width: 100% !important;
+  }
+
+  .detail-header-card, .detail-section-card, .dashboard-stat-card {
+    background-color: #ffffff !important;
+    border: 1px solid #e2e8f0 !important;
+    color: #000000 !important;
+    box-shadow: none !important;
+  }
+
+  .detail-event-title {
+    color: #c2410c !important; /* Dark orange for print readability */
+  }
+
+  .dashboard-stat-value, .drawer-section-title {
+    color: #c2410c !important;
+  }
+
+  .dashboard-table-th {
+    color: #334155 !important;
+    border-bottom: 2px solid #cbd5e1 !important;
+  }
+
+  .dashboard-table-tr {
+    border-bottom: 1px solid #e2e8f0 !important;
+  }
+
+  .dashboard-table-td {
+    color: #000000 !important;
+  }
+}
