@@ -192,3 +192,10 @@
   * Formulated Slide deck Part 1 (slides 1 to 7) detailing problem parameters and UI solution screens.
 * **Key Decisions**:
   * Decided to record the E2E walkthrough video using Vercel production builds to demonstrate live database synchronization with the Render backend.
+
+### Day 25: 29 June 2026
+* **Tasks Undertaken**:
+  * Presented the final Review 3 live demo to evaluators showing form validations, dynamic chart statistics, details logs, and mobile stack layouts.
+  * Answered evaluator UX questions on badge colors and navigation bars.
+* **Key Decisions**:
+  * Submitted all frontend-related package parameters and finalized logs on the main Git remotes.
