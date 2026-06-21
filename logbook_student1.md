@@ -184,3 +184,11 @@
   * Authored **Chapter 1 (Introduction)** and **Chapter 4 (UI Design)** of the final project report.
 * **Key Decisions**:
   * Outlined wireframe references and glassmorphic styling choices directly in Chapter 4 to satisfy documentation guidelines.
+
+### Day 24: 27 June 2026
+* **Tasks Undertaken**:
+  * Recorded a 5-minute unlisted YouTube demo walkthrough video demonstrating form entries, dynamic validations, ROI calculations, and detail/history pages.
+  * Added video link paths inside the main README.md.
+  * Formulated Slide deck Part 1 (slides 1 to 7) detailing problem parameters and UI solution screens.
+* **Key Decisions**:
+  * Decided to record the E2E walkthrough video using Vercel production builds to demonstrate live database synchronization with the Render backend.
