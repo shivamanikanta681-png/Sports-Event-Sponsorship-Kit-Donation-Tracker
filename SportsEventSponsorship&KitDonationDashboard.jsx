@@ -132,15 +132,15 @@ export default function SportsEventSponsorshipAndKitDonationDashboard({ onViewDe
 
       {/* Grid Table */}
       {loading ? (
-        <div style={{ textAlign: 'center', padding: '50px 0' }}>
-          <div className="spinner" style={{ border: '4px solid rgba(255, 255, 255, 0.05)', width: '36px', height: '36px', borderRadius: '50%', borderLeftColor: '#ff8c00', margin: '0 auto' }}></div>
-          <p style={{ marginTop: '15px', color: '#94a3b8' }}>Loading live records from database...</p>
+        <div className="spinner-container">
+          <div className="spinner"></div>
+          <p style={{ color: '#94a3b8' }}>Loading live records from database...</p>
         </div>
       ) : records.length === 0 ? (
-        <div className="empty-state" style={{ textAlign: 'center', padding: '60px 0' }}>
-          <span style={{ fontSize: '2.5rem' }}>📭</span>
-          <h3>No Sponsorship Records Found</h3>
-          <p style={{ color: '#94a3b8' }}>Try altering search parameters or log a new donation entry.</p>
+        <div className="empty-state">
+          <div className="empty-state-icon">📭</div>
+          <div className="empty-state-title">No Sponsorship Records Found</div>
+          <div className="empty-state-subtitle">Try altering search parameters or log a new donation entry.</div>
         </div>
       ) : (
         <div style={{ overflowX: 'auto' }}>

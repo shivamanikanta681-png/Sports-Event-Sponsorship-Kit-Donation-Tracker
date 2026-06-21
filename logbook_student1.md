@@ -160,3 +160,12 @@
   * Added CSS declarations in [style.css](file:///C:/Users/Shiva/.gemini/antigravity/scratch/oxygen-sports-tracker/frontend/style.css).
 * **Key Decisions**:
   * Built custom print media css rule blocks (`@media print`) to hide navigation layouts, headers, and buttons, ensuring printed invoice details remain clean.
+
+### Day 21: 24 June 2026
+* **Tasks Undertaken**:
+  * Performed a complete UI visual audit ensuring standard spacing, typography, and button heights on an 8px grid.
+  * Added standardized loading spinner overlays using CSS keyframe animations for all asynchronous actions.
+  * Created customized glassmorphic empty state cards for every list page when searches/filters match zero rows.
+  * Fixed responsive mobile and tablet issues at 375px and 768px viewports.
+* **Key Decisions**:
+  * Enforced global font inheritance of the 'Inter' family on all elements including inputs/buttons in stylesheet rather than inline blocks to keep files lean.

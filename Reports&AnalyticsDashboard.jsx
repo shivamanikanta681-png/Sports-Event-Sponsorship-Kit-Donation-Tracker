@@ -78,13 +78,15 @@ export default function ReportsAndAnalyticsDashboard() {
       </div>
 
       {loading ? (
-        <div style={{ textAlign: 'center', padding: '80px 0' }}>
-          <div className="spinner" style={{ border: '4px solid rgba(255, 255, 255, 0.05)', width: '40px', height: '40px', borderRadius: '50%', borderLeftColor: '#ff8c00', margin: '0 auto' }}></div>
-          <p style={{ marginTop: '20px', color: '#94a3b8' }}>Aggregating analytics database records...</p>
+        <div className="spinner-container">
+          <div className="spinner"></div>
+          <p style={{ color: '#94a3b8' }}>Aggregating analytics database records...</p>
         </div>
-      ) : !summary ? (
-        <div style={{ textAlign: 'center', padding: '50px 0' }}>
-          <p>Failed to aggregate reports summary metrics.</p>
+      ) : !summary || summary.totalRecords === 0 ? (
+        <div className="empty-state">
+          <div className="empty-state-icon">📊</div>
+          <div className="empty-state-title">No Reports Data Available</div>
+          <div className="empty-state-subtitle">No records exist for the selected date range. Choose another range or seed more sponsorships.</div>
         </div>
       ) : (
         <>

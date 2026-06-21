@@ -20,6 +20,7 @@ export default function SportsEventSponsorshipAndKitDonationEntryForm({ sponsors
   const [notes, setNotes] = useState('');
   const [validationError, setValidationError] = useState('');
   const [successMessage, setSuccessMessage] = useState('');
+  const [submitting, setSubmitting] = useState(false);
   const isEditMode = !!sponsorshipId;
 
   // Load existing data if in Edit Mode
@@ -113,6 +114,7 @@ export default function SportsEventSponsorshipAndKitDonationEntryForm({ sponsors
       notes
     };
 
+    setSubmitting(true);
     try {
       const url = isEditMode 
         ? `http://localhost:5000/api/sports_event_sponsorship_kit_donati/${sponsorshipId}`
@@ -136,6 +138,8 @@ export default function SportsEventSponsorshipAndKitDonationEntryForm({ sponsors
     } catch (err) {
       console.error(err);
       setValidationError('Server communication failure.');
+    } finally {
+      setSubmitting(false);
     }
   };
 
@@ -363,11 +367,11 @@ export default function SportsEventSponsorshipAndKitDonationEntryForm({ sponsors
         </fieldset>
 
         <div className="action-btn-row">
-          <button type="submit" className="btn-submit-action">
-            {isEditMode ? 'Update Log Entry' : 'Save Sponsorship Entry'}
+          <button type="submit" className="btn-submit-action" disabled={submitting}>
+            {submitting ? 'Processing...' : (isEditMode ? 'Update Log Entry' : 'Save Sponsorship Entry')}
           </button>
           {onCancel && (
-            <button type="button" onClick={onCancel} className="btn-cancel-action">
+            <button type="button" onClick={onCancel} className="btn-cancel-action" disabled={submitting}>
               Cancel
             </button>
           )}

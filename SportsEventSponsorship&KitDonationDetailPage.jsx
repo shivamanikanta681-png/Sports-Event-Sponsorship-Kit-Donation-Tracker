@@ -43,13 +43,15 @@ export default function SportsEventSponsorshipAndKitDonationDetailPage({ sponsor
       </div>
 
       {loading ? (
-        <div style={{ textAlign: 'center', padding: '80px 0' }}>
-          <div className="spinner" style={{ border: '4px solid rgba(255, 255, 255, 0.05)', width: '40px', height: '40px', borderRadius: '50%', borderLeftColor: '#ff8c00', margin: '0 auto' }}></div>
-          <p style={{ marginTop: '20px', color: '#94a3b8' }}>Gathering detailed audit logs data...</p>
+        <div className="spinner-container">
+          <div className="spinner"></div>
+          <p style={{ color: '#94a3b8' }}>Gathering detailed audit logs data...</p>
         </div>
       ) : !detailData ? (
-        <div style={{ textAlign: 'center', padding: '50px 0' }}>
-          <p>Failed to retrieve sponsorship detail history.</p>
+        <div className="empty-state">
+          <div className="empty-state-icon">⚠️</div>
+          <div className="empty-state-title">Failed to Retrieve Record Details</div>
+          <div className="empty-state-subtitle">The requested sponsorship ID does not exist or server returned an error.</div>
         </div>
       ) : (
         <div className="print-area">
